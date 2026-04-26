@@ -5,14 +5,17 @@ import StyledRecordCell from '../common/StyledRecordCell';
 import './CalorieRecord.css';
 
 function CalorieRecord(props) {
-  const [curentCalories, setCurrentCalories] = useState(Number(props.calories));
+  const [currentCalories, setCurrentCalories] = useState(
+    Number(props.calories)
+  );
 
   const caloriesHandler = () => {
-    // console.log(curentCalories);
-    setCurrentCalories(curentCalories + 10);
-    // console.log(curentCalories);
+    // console.log(currentCalories);
+    setCurrentCalories(currentCalories + 10);
+    // setCurrentCalories((count) => count + 10);
+    // console.log(currentCalories);
   };
-  console.log(curentCalories);
+  console.log(currentCalories);
   return (
     <ul className="record">
       <li>
@@ -21,7 +24,7 @@ function CalorieRecord(props) {
       <li>{props.meal}</li>
       <li>{props.content}</li>
       <li className="record-calories" onClick={caloriesHandler}>
-        <StyledRecordCell>{curentCalories}</StyledRecordCell>
+        <StyledRecordCell>{currentCalories}</StyledRecordCell>
       </li>
     </ul>
   );
