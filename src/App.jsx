@@ -1,4 +1,5 @@
-import RecordList from './components/RecordList';
+import RecordList from './components/calorieRecordsSection/RecordList';
+import CaloriesRecordEdit from './components/edit/CaloriesRecordEdit';
 
 function App() {
   const records = [
@@ -31,6 +32,7 @@ function App() {
   return (
     <div className="App">
       <h1>Welcome to React with Almdrasa!</h1>
+      <CaloriesRecordEdit></CaloriesRecordEdit>
       <RecordList records={records}></RecordList>
     </div>
   );

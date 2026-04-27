@@ -1,4 +1,4 @@
-import StyledRecordCell from './common/StyledRecordCell';
+import StyledRecordCell from '../common/StyledRecordCell';
 import './CalorieRecordDate.css';
 
 function CalorieRecordDate(props) {

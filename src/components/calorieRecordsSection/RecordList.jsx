@@ -1,4 +1,4 @@
-import CalorieRecord from './calorieRecordsSection/CalorieRecord';
+import CalorieRecord from './CalorieRecord';
 import './RecordList.css';
 
 function RecordList(props) {

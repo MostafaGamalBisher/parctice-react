@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import CalorieRecordDate from '../CalorieRecordDate';
+import CalorieRecordDate from './CalorieRecordDate';
 import StyledRecordCell from '../common/StyledRecordCell';
 import './CalorieRecord.css';
 
@@ -10,10 +10,8 @@ function CalorieRecord(props) {
   );
 
   const caloriesHandler = () => {
-    // console.log(currentCalories);
-    setCurrentCalories(currentCalories + 10);
-    // setCurrentCalories((count) => count + 10);
-    // console.log(currentCalories);
+    // setCurrentCalories(currentCalories + 10);
+    setCurrentCalories((count) => count + 10);
   };
   console.log(currentCalories);
   return (
