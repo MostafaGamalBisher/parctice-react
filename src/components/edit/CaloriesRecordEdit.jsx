@@ -11,16 +11,16 @@ function CaloriesRecordEdit() {
   const [mealRecord, setMealRecord] = useState({});
 
   const onDateChangeHandler = (e) => {
-    setMealRecord({ ...mealRecord, date: e.target.value });
+    setMealRecord((pervValue) => ({ ...pervValue, date: e.target.value }));
   };
   const onMealChangeHandler = (e) => {
-    setMealRecord({ ...mealRecord, meal: e.target.value });
+    setMealRecord((pervValue) => ({ ...pervValue, meal: e.target.value }));
   };
   const onContentChangeHandler = (e) => {
-    setMealRecord({ ...mealRecord, content: e.target.value });
+    setMealRecord((pervValue) => ({ ...pervValue, content: e.target.value }));
   };
   const onCaloriesChangeHandler = (e) => {
-    setMealRecord({ ...mealRecord, calories: e.target.value });
+    setMealRecord((pervValue) => ({ ...pervValue, calories: e.target.value }));
   };
 
   const onSubmitHandler = (e) => {
@@ -28,14 +28,27 @@ function CaloriesRecordEdit() {
     console.log({
       mealRecord,
     });
+
+    setMealRecord({
+      date: '',
+      meal: 'Breakfast',
+      content: '',
+      calories: '',
+    });
   };
 
   return (
     <form onSubmit={onSubmitHandler}>
       <label htmlFor="date">Date:</label>
-      <input type="date" name="date" id="date" onChange={onDateChangeHandler} />
+      <input
+        type="date"
+        name="date"
+        id="date"
+        value={mealRecord.date || ''}
+        onChange={onDateChangeHandler}
+      />
       <label>Meal:</label>
-      <select onChange={onMealChangeHandler}>
+      <select value={mealRecord.meal || ''} onChange={onMealChangeHandler}>
         <option value="Breakfast">Breakfast</option>
         <option value="Lunch">Lunch</option>
         <option value="Dinner">Dinner</option>
@@ -46,6 +59,7 @@ function CaloriesRecordEdit() {
         type="text"
         name="Content"
         id="Content"
+        value={mealRecord.content || ''}
         onChange={onContentChangeHandler}
       />
       <label htmlFor="Calories">Calories:</label>
@@ -53,6 +67,7 @@ function CaloriesRecordEdit() {
         type="number"
         name="Calories"
         id="Calories"
+        value={mealRecord.calories || ''}
         onChange={onCaloriesChangeHandler}
       />
       <div className="footer">
