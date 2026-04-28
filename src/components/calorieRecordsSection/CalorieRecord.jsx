@@ -13,7 +13,7 @@ function CalorieRecord(props) {
     // setCurrentCalories(currentCalories + 10);
     setCurrentCalories((count) => count + 10);
   };
-  console.log(currentCalories);
+
   return (
     <ul className="record">
       <li>
