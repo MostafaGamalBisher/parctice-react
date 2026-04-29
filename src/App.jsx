@@ -29,10 +29,14 @@ function App() {
     },
   ];
 
+  const formSubmitHandler = (record) => {
+    console.log(record);
+  };
+
   return (
     <div className="App">
       <h1>Welcome to React with Almdrasa!</h1>
-      <CaloriesRecordEdit></CaloriesRecordEdit>
+      <CaloriesRecordEdit onFormSubmit={formSubmitHandler}></CaloriesRecordEdit>
       <RecordList records={records}></RecordList>
     </div>
   );

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './CaloriesRecordEdit.css';
 
-function CaloriesRecordEdit() {
+function CaloriesRecordEdit(props) {
   // const [maxCalories, setMaxCalories] = useState(0);
   // const [dateValue, setDateValue] = useState();
   // const [mealValue, setMealValue] = useState();
@@ -28,6 +28,8 @@ function CaloriesRecordEdit() {
     console.log({
       mealRecord,
     });
+
+    props.onFormSubmit(mealRecord);
 
     setMealRecord({
       date: '',
