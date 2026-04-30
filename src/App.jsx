@@ -1,43 +1,37 @@
+import { useEffect, useState } from 'react';
 import RecordList from './components/calorieRecordsSection/RecordList';
 import CaloriesRecordEdit from './components/edit/CaloriesRecordEdit';
 
 function App() {
-  const records = [
-    {
-      date: new Date(2023, 2, 1),
-      meal: 'breakfast',
-      content: 'eggs',
-      calories: 340,
-    },
-    {
-      date: new Date(2023, 2, 2),
-      meal: 'launch',
-      content: 'cosa',
-      calories: 20,
-    },
-    {
-      date: new Date(2023, 2, 3),
-      meal: 'dinner',
-      content: 'water',
-      calories: 2000,
-    },
-    {
-      date: new Date(2023, 2, 4),
-      meal: 'snacks',
-      content: 'shai koshary',
-      calories: 34,
-    },
-  ];
+  const [records, setRecords] = useState(() => {
+    const savedRecordsString = localStorage.getItem('myTrackerData');
 
-  const formSubmitHandler = (record) => {
-    console.log(record);
+    if (savedRecordsString) {
+      const parsedArray = JSON.parse(savedRecordsString);
+      return parsedArray.map((record) => ({
+        ...record,
+        date: new Date(record.date),
+      }));
+    }
+
+    return [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('myTrackerData', JSON.stringify(records));
+  }, [records]);
+
+  const formSubmitHandler = (newRecordFromChild) => {
+    setRecords((prevRecords) => {
+      return [newRecordFromChild, ...prevRecords];
+    });
   };
 
   return (
     <div className="App">
       <h1>Welcome to React with Almdrasa!</h1>
-      <CaloriesRecordEdit onFormSubmit={formSubmitHandler}></CaloriesRecordEdit>
-      <RecordList records={records}></RecordList>
+      <CaloriesRecordEdit onFormSubmit={formSubmitHandler} />
+      <RecordList records={records} />
     </div>
   );
 }

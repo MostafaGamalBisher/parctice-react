@@ -25,11 +25,14 @@ function CaloriesRecordEdit(props) {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    console.log({
-      mealRecord,
-    });
+    const completeRecord = {
+      ...mealRecord,
+      id: Date.now(),
+      date: new Date(mealRecord.date),
+      calories: Number(mealRecord.calories),
+    };
 
-    props.onFormSubmit(mealRecord);
+    props.onFormSubmit(completeRecord);
 
     setMealRecord({
       date: '',
