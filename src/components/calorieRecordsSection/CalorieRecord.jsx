@@ -1,19 +1,8 @@
-import { useState } from 'react';
-
 import CalorieRecordDate from './CalorieRecordDate';
 import StyledRecordCell from '../common/StyledRecordCell';
 import './CalorieRecord.css';
 
 function CalorieRecord(props) {
-  const [currentCalories, setCurrentCalories] = useState(
-    Number(props.calories)
-  );
-
-  const caloriesHandler = () => {
-    // setCurrentCalories(currentCalories + 10);
-    setCurrentCalories((count) => count + 10);
-  };
-
   return (
     <ul className="record">
       <li>
@@ -21,8 +10,8 @@ function CalorieRecord(props) {
       </li>
       <li>{props.meal}</li>
       <li>{props.content}</li>
-      <li className="record-calories" onClick={caloriesHandler}>
-        <StyledRecordCell>{currentCalories}</StyledRecordCell>
+      <li className="record-calories">
+        <StyledRecordCell>{props.calories}</StyledRecordCell>
       </li>
     </ul>
   );

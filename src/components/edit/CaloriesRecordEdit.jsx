@@ -25,6 +25,7 @@ function CaloriesRecordEdit(props) {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
+
     const completeRecord = {
       ...mealRecord,
       id: Date.now(),
